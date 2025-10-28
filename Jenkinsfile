@@ -21,7 +21,7 @@ pipeline {
       steps {
         script {
           echo "🛠️ Building image ${IMAGE}:${TAG}..."
-          def builtImage = docker.build("${IMAGE}:${TAG}")
+          docker.build("${IMAGE}:${TAG}")
         }
       }
     }
@@ -71,3 +71,4 @@ pipeline {
     }
   }
 }
+
