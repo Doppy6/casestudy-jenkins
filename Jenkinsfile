@@ -4,8 +4,8 @@ pipeline {
   environment {
     IMAGE = "doppy6/demo-app"
     TAG = "latest"
-    DOCKER_CRED = "dockerhub-credentials"
-    KUBECONFIG_CRED = "kubeconfig"
+    DOCKER_CRED = "docker-hub"
+    KUBECONFIG_CRED = "kubeconfig-dev"
     NAMESPACE = "default"
     HELM_RELEASE = "casestudy-jenkins1"
   }
@@ -21,7 +21,7 @@ pipeline {
       steps {
         script {
           echo "🛠️ Building image ${IMAGE}:${TAG}..."
-          sh' docker build "${IMAGE}:${TAG}"'
+          def builtImage = docker.build("${IMAGE}:${TAG}")
         }
       }
     }
@@ -71,6 +71,3 @@ pipeline {
     }
   }
 }
-
-
-
