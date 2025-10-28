@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    IMAGE = "azeshion21/demo-app"
+    IMAGE = "doppy6/demo-app"
     TAG = "latest"
     DOCKER_CRED = "docker-hub"
     KUBECONFIG_CRED = "kubeconfig-dev"
@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Checkout Source Code') {
       steps {
-        git url: 'https://github.com/orion2182/casestudy-jenkins.git', branch: 'main'
+        git url: 'https://github.com/doppy6/casestudy-jenkins.git', branch: 'main'
       }
     }
 
@@ -29,7 +29,7 @@ pipeline {
     stage('Push Docker Image') {
       steps {
         withCredentials([usernamePassword(
-          credentialsId: "docker-hub",
+          credentialsId: "dockerhub-credentials",
           usernameVariable: 'USER',
           passwordVariable: 'PASS'
         )]) {
@@ -71,3 +71,4 @@ pipeline {
     }
   }
 }
+
