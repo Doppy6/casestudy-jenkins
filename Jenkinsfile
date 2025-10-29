@@ -1,5 +1,5 @@
 pipeline {
-  agent docker
+  agent any
 
   environment {
     IMAGE = "doppy6/demo-app"
@@ -71,6 +71,7 @@ pipeline {
     }
   }
 }
+
 
 
 
